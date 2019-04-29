@@ -34,10 +34,11 @@ export class RegisterPage implements OnInit {
   }
 
   register(form: NgForm) {
-    this.authService.register(form.value.fName, form.value.lName, 
+    this.authService.register(form.value.uName, form.value.fName, form.value.lName, 
       form.value.email, form.value.password).subscribe(
         data => {
-          this.authService.login(form.value.email,
+          console.log("Correct");
+          /* this.authService.login(form.value.email,
             form.value.password).subscribe(
               data => {
 
@@ -49,8 +50,10 @@ export class RegisterPage implements OnInit {
                 this.dimissRegister();
                 this.navCtrl.navigateRoot("/dashboard");
               }
-            );
-            this.alertService.presentToast(data['message']);
+            ); */
+            this.alertService.presentToast("User " + form.value.uName +" registered.");
+            this.dimissRegister();
+           // this.navCtrl.navigateRoot("/dashboard");
         },
         error => {
           console.log(error);
