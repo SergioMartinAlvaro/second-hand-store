@@ -28,11 +28,12 @@ export class AuthService {
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*'
     });
+    var data = {NickName: email, Password: password};
     return this.http.post(this.env.API_URL + 'api/login', 
-    {UserName: email, Password: password} 
+    data, {headers: headers}
     ).pipe(
       tap(token => {
-        this.localStorage.setItem("token", token.token);
+        this.localStorage.setItem("token", token["token"]);
         this.token = token;
         this.isLoggedIn = true;
         return token;
