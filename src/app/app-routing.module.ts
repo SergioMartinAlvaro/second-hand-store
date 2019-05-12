@@ -10,6 +10,7 @@ const routes: Routes = [
   },
   { path: 'landing', loadChildren: './pages/landing/landing.module#LandingPageModule' },
   { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
+  { path: 'category/:categoryId', loadChildren: './pages/category/category.module#CategoryComponentModule'},
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard] },
  // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate:[AuthGuard]},

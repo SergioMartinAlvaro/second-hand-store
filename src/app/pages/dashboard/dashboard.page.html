@@ -8,8 +8,20 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Welcome to the internet</h1>
+  <h1>SERGIO'S ONLINE SHOP</h1>
+  <br>
   <div *ngIf="user != undefined">
-    Welcome {{ user["first_name"] }} {{ user["last_name"]}}
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let category of categories" col-6 no-padding>
+          <ion-card-header>
+            {{category.categoryName}}
+          </ion-card-header>
+          <ion-card-content class="fixline" routerLink="/category/{{category.categoryId}}">
+            This is the space where should be an image.
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

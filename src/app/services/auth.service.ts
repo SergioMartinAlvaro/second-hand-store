@@ -29,10 +29,10 @@ export class AuthService {
       'Access-Control-Allow-Origin': '*'
     });
     return this.http.post(this.env.API_URL + 'api/login', 
-    {UserName: email, Password: password} 
+    {NickName: email, Password: password} 
     ).pipe(
       tap(token => {
-        this.localStorage.setItem("token", token.token);
+        this.localStorage.setItem("token", token["token"]);
         this.token = token;
         this.isLoggedIn = true;
         return token;
