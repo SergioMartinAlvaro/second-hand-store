@@ -1,4 +1,7 @@
-<ion-header>
+
+
+
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -12,15 +15,17 @@
   <div *ngIf="token != undefined">
     <ion-grid>
       <ion-row *ngIf="category">
-        <ion-col *ngFor="let product of category.Products" col-6 no-padding>
+        <ion-col *ngFor="let product of category.Products" size="12" size-sm size-md no-padding class="img-product-row">
           <ion-card-header>
-            {{product.productName}}
+            <h2 style="align:centre">{{product.productName}}</h2>
           </ion-card-header>
           <ion-card-content class="fixline">
-            This is the space where should be an image.
+            <ion-img src="../../../assets/img/sample.jpg" class="img-product"></ion-img>
           </ion-card-content>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 </ion-content>
+
+-->

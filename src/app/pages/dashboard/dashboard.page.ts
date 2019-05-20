@@ -14,6 +14,11 @@ export class DashboardPage implements OnInit {
 
   user: User;
   categories: any;
+  sliderConfig = {
+    spaceBetween: 10,
+    centeredSlides: true,
+    slidesPerView: 1.6
+  }
 
   constructor(
     private menu: MenuController,

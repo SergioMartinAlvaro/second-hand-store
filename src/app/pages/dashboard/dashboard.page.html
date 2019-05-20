@@ -1,12 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>
+      SmintBuster
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
+<ion-content>
+  <div *ngFor="let category of categories" class="category-block">
+    <ion-row no-padding class="category-banner">
+      <ion-col text-left button tappable align-self-center (click)="category.expanded = !category.expanded">
+          {{category.categoryName}}
+      </ion-col>
+    </ion-row>
+    <ion-slides [options]="sliderConfig">
+        <ion-slide *ngFor="let product of category.products">
+          <div *ngIf="category.expanded">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>
+                  {{product.productName}}
+                </ion-card-title>
+                <ion-card-content>
+                  <img src="../../../assets/img/sample.jpg" style="height:150px; width:300px">
+                  <ion-button expand="full">Add to Cart</ion-button>
+                </ion-card-content>
+              </ion-card-header>
+            </ion-card>
+          </div>
+          </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
+<!-- 
 <ion-content padding>
   <h1>SERGIO'S ONLINE SHOP</h1>
   <br>
@@ -24,4 +50,4 @@
       </ion-row>
     </ion-grid>
   </div>
-</ion-content>
+</ion-content>  -->
