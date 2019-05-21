@@ -1,10 +1,6 @@
-<ion-header>
-  <ion-toolbar></ion-toolbar>
-</ion-header>
-
 <ion-content>
   <ion-card class="welcome-card">
-    <ion-img src="/assets/shapes.svg"></ion-img>
+    <img src="/assets/img/logo.jpg">
     <ion-card-header>
       <ion-card-subtitle>SMINT-BUSTER</ion-card-subtitle>
       <ion-card-title>Welcome to Smint-Buster!</ion-card-title>
@@ -19,12 +15,12 @@
   <ion-toolbar>
     <ion-row>
       <ion-col>
-        <ion-button color="primary" expand="full" color="primary"
+        <ion-button expand="full" class="login" color="#33CD1E"
           (click)="login()">Login</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="primary" expand="full" color="danger"
-          (click)="register()">Register</ion-button>
+        <ion-button expand="full" class="register"
+          (click)="register()" color="#166B0A">Register</ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>
