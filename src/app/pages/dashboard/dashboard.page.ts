@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Category } from 'src/app/models/category';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { CategoryService } from './../../services/category.service';
 
 @Component({
@@ -13,12 +14,14 @@ import { CategoryService } from './../../services/category.service';
 export class DashboardPage implements OnInit {
 
   user: User;
+  userProfile: any;
   categories: any;
   sliderConfig = {
     spaceBetween: 10,
     centeredSlides: true,
     slidesPerView: 1.6
   }
+  private localStorage: any;
 
   constructor(
     private menu: MenuController,
@@ -26,16 +29,22 @@ export class DashboardPage implements OnInit {
     private _categoryService: CategoryService
   ) {
     this.menu.enable(true);
+    this.localStorage = localStorage;
    }
 
   ngOnInit() {
     this._categoryService.getCategories().subscribe(
       data => {
         this.categories = data;
-        console.log(this.categories);
       }
     )
-    console.log(this.categories);
+    this.authService.getUserProfile().subscribe(
+      data => {
+        this.userProfile = data;
+        console.log(this.userProfile);
+      }
+    )
+    console.log(this.userProfile);
   }
 
   ionViewWillEnter() {

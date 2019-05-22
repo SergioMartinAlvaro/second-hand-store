@@ -6,6 +6,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { EnvService } from './env.service';
 import { User } from '../models/user';
 import { Storage } from '@ionic/storage';
+import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,14 @@ export class AuthService {
     private env: EnvService
   ) { 
     this.localStorage = localStorage;
+  }
+
+  getUserProfile() {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.token["token"]
+    });
+    return this.http.get(this.env.API_URL + 'api/UserProfile', {headers: headers}
+    );
   }
 
   login(email: String, password: String) {
