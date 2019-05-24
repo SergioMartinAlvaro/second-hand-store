@@ -12,12 +12,16 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 export class LoginPage implements OnInit {
 
+  private localStorage: any;
+
   constructor(
     private modalController: ModalController,
     private authService: AuthService,
     private navCtrl: NavController,
     private alertService: AlertService
-  ) { }
+  ) {
+    this.localStorage = localStorage;
+   }
 
   ngOnInit() {
   }
@@ -38,6 +42,8 @@ export class LoginPage implements OnInit {
     this.authService.login(form.value.uName, form.value.password).subscribe(
       data => {
         this.alertService.presentToast("Logged In");
+        this.dimissLogin();
+        this.navCtrl.navigateRoot('/');
       },
       error => {
         console.log(error);

@@ -27,7 +27,7 @@ export class AuthService {
 
   getUserProfile() {
     const headers = new HttpHeaders({
-      'Authorization': "Bearer " + this.token["token"]
+      'Authorization': "Bearer " + this.localStorage["token"]
     });
     return this.http.get(this.env.API_URL + 'api/UserProfile', {headers: headers}
     );
@@ -50,9 +50,9 @@ export class AuthService {
     );
   }
 
-  register(uName: String, fName: String, lName: String, email: String, password: String) {
+  register(uName: String, fName: String, lName: String, email: String, password: String, userType) {
     return this.http.post(this.env.API_URL + 'api/register',
-      {NickName: uName, FirstName: fName, LastName: lName, Email: email, Password: password})
+      {NickName: uName, FirstName: fName, LastName: lName, Email: email, Password: password, UserType: userType})
   }
 
   logout() {

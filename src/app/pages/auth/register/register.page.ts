@@ -35,7 +35,7 @@ export class RegisterPage implements OnInit {
 
   register(form: NgForm) {
     this.authService.register(form.value.uName, form.value.fName, form.value.lName, 
-      form.value.email, form.value.password).subscribe(
+      form.value.email, form.value.password, "User").subscribe(
         data => {
           console.log("Correct");
           /* this.authService.login(form.value.email,

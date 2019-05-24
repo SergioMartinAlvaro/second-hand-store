@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: 'category/:categoryId', loadChildren: './pages/category/category.module#CategoryComponentModule'},
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard] },
+  { path: 'product', loadChildren: './pages/product/product.module#ProductPageModule' },
+  { path: 'create-product', loadChildren: './pages/product/create-product/create-product.module#CreateProductPageModule' },
  // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate:[AuthGuard]},
  // { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard]},
 ];

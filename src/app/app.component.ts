@@ -30,6 +30,9 @@ export class AppComponent {
     }
   ];
 
+  localStorage: any;
+  token: any;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -39,7 +42,17 @@ export class AppComponent {
     private alertService: AlertService,
   ) {
     this.initializeApp();
+    this.localStorage = localStorage;
+    this.token = this.localStorage["token"];
   }
+
+  ngOnInit() {
+    //this.token = this.localStorage["token"];
+  }
+
+  ionViewWillEnter() {
+    this.token = this.localStorage["token"];
+}
 
   initializeApp() {
     this.platform.ready().then(() => {

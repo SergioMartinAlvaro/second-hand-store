@@ -32,7 +32,9 @@
     </ion-slides>
   </div>
 </ion-content>
-<ion-fab-button size="small" *ngIf="userProfile.userType == 'company'">+</ion-fab-button>
+<div *ngIf="userProfile != null">
+  <ion-fab-button size="small" *ngIf="userProfile.userType == 'company'" routerLink="/create-product">+</ion-fab-button>
+</div>
 <!-- 
 <ion-content padding>
   <h1>SERGIO'S ONLINE SHOP</h1>
