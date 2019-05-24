@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ProductService } from './../../../services/product.service';
 import { Category } from 'src/app/models/category';
 import { NavController } from '@ionic/angular';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-create-product',
@@ -17,7 +18,8 @@ export class CreateProductPage implements OnInit {
   constructor(
     private _categoryService: CategoryService,
     private _productService: ProductService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private alertService: AlertService
   ) {
     this.localStorage = localStorage;
    }
@@ -34,7 +36,8 @@ export class CreateProductPage implements OnInit {
   createProduct(form: NgForm) {
     this._productService.createProduct(form.value.Name, form.value.Description, form.value.Price, form.value.Category)
       .subscribe(data => {
-        console.log(data)
+        this.alertService.presentToast("Product created succesfully!");
+        form.reset();
       });
   }
 
