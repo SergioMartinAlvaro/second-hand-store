@@ -33,10 +33,15 @@ export class RegisterPage implements OnInit {
     return await loginModal.present();
   }
 
+  getUserTypes() {
+    return ["Company", "User"];
+  }
+
   register(form: NgForm) {
     this.authService.register(form.value.uName, form.value.fName, form.value.lName, 
-      form.value.email, form.value.password, "User").subscribe(
+      form.value.email, form.value.password, form.value.UserType).subscribe(
         data => {
+          console.log(data);
           console.log("Correct");
           /* this.authService.login(form.value.email,
             form.value.password).subscribe(
@@ -62,6 +67,10 @@ export class RegisterPage implements OnInit {
 
         }
       );
+  }
+
+  onChange(value) {
+    console.log(value)
   }
 
 }

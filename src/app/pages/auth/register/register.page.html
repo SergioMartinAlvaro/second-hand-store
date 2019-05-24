@@ -29,6 +29,14 @@
       <ion-label position="floating">Password</ion-label>
       <ion-input type="password" ngModel name="password"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">User Type: </ion-label>
+      <ion-select #S position="floating" (ionChange)="onChange(S.value)" ngModel name="UserType">
+          <ion-select-option *ngFor="let userType of getUserTypes()"  [value]="userType">{{userType}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
     <br>
     <ion-button type="submit" expand="full" class="register" color="#166B0A">Register</ion-button>
   </form>

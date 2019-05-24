@@ -50,7 +50,7 @@ export class AuthService {
     );
   }
 
-  register(uName: String, fName: String, lName: String, email: String, password: String, userType) {
+  register(uName: String, fName: String, lName: String, email: String, password: String, userType: string) {
     return this.http.post(this.env.API_URL + 'api/register',
       {NickName: uName, FirstName: fName, LastName: lName, Email: email, Password: password, UserType: userType})
   }
