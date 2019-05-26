@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title *ngIf="product">{{product.productName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="product">
+  <p>Page for {{product.productName}}</p>
+  <p>{{product.productDescription}}</p>
+</ion-content>

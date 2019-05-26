@@ -21,7 +21,7 @@
                 <ion-card-title>
                   {{product.productName}}
                 </ion-card-title>
-                <ion-card-content>
+                <ion-card-content routerLink="/product-view/{{product.productId}}">
                   <img src="../../../assets/img/sample.jpg" style="height:150px; width:300px">
                   <ion-button expand="full">Add to Cart</ion-button>
                 </ion-card-content>

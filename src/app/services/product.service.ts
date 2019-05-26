@@ -21,7 +21,13 @@ export class ProductService {
       'Authorization': "Bearer " + this.localStorage["token"]
     });
     var data = {ProductName: name, ProductDescription: description, ProductImage: "default.jpg", UserId: 1, ProductPrice: price, CategoryId: categoryId};
-    console.log(data);
     return this.http.post(this.env.API_URL + 'api/ProductModels', data, {headers : headers});
+  }
+
+  getProduct(id:number) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    return this.http.get(this.env.API_URL + 'api/ProductModels/' + id , {headers : headers});
   }
 }
