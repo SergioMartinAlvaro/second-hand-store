@@ -1,18 +1,14 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-      <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
-    <ion-title>Create a new product</ion-title>
+    <ion-title>user-profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <form #form="ngForm" (ngSubmit)="createProduct(form)" method="post">
+<ion-content padding *ngIf="userProfile != null">
+    <form #form="ngForm" (ngSubmit)="editProfile(form)" method="put">
         <ion-item>
-            <ion-label position="floating">Name: </ion-label>
-            <ion-input ngModel name="Name"></ion-input>
+            <ion-label position="floating">Nick Name: </ion-label>
+            <ion-input ngModel name="nickName" value="{{userProfile.nickName}}">{{userProfile.nickName}}</ion-input>
         </ion-item>
       <ion-item>
           <ion-label position="floating">Description: </ion-label>
@@ -34,3 +30,4 @@
       <ion-button type="submit" expand="full" class="create" color="#166B0A">Create Product</ion-button>
     </form>
 </ion-content>
+

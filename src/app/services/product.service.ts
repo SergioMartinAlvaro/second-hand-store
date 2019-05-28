@@ -16,11 +16,11 @@ export class ProductService {
       this.localStorage = localStorage;
      }
 
-  createProduct(name:string, description:string, price:number, categoryId:any) {
+  createProduct(name:string, description:string, price:number, categoryId:any, userId: any) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer " + this.localStorage["token"]
     });
-    var data = {ProductName: name, ProductDescription: description, ProductImage: "default.jpg", UserId: 1, ProductPrice: price, CategoryId: categoryId};
+    var data = {ProductName: name, ProductDescription: description, ProductImage: "default.jpg", UserId: userId, ProductPrice: price, CategoryId: categoryId};
     return this.http.post(this.env.API_URL + 'api/ProductModels', data, {headers : headers});
   }
 
