@@ -19,6 +19,14 @@ export class UserProfilePage implements OnInit {
     this.getUserPofile();
   }
 
+  onChange(val) {
+    
+  }
+
+  getUserTypes() {
+    return ["Company", "User"];
+  }
+
  getUserPofile() {
     this._authService.getUserProfile().subscribe(data => {
       this.userProfile = data;
