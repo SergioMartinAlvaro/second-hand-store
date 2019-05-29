@@ -15,10 +15,9 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard] },
   { path: 'product', loadChildren: './pages/product/product.module#ProductPageModule' },
   { path: 'create-product', loadChildren: './pages/product/create-product/create-product.module#CreateProductPageModule' },
-  { path: 'product-view/:productId', loadChildren: './pages/product/product-view/product-view.module#ProductViewPageModule' },  { path: 'spinner', loadChildren: './pages/spinner/spinner.module#SpinnerPageModule' },
-
-
-
+  { path: 'product-view/:productId', loadChildren: './pages/product/product-view/product-view.module#ProductViewPageModule' },
+  { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },
+  { path: 'user-profile', loadChildren: './pages/user/user-profile/user-profile.module#UserProfilePageModule' },
  // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate:[AuthGuard]},
  // { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard]},
 ];

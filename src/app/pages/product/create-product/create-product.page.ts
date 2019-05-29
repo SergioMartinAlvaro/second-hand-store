@@ -9,6 +9,7 @@ import { Camera, PictureSourceType, CameraOptions } from '@ionic-native/Camera/n
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Storage } from '@ionic/storage';
+import { AuthService } from './../../../services/auth.service';
 
 const STORAGE_KEY = "my_images";
 @Component({
@@ -21,6 +22,7 @@ export class CreateProductPage implements OnInit {
   private localStorage: any;
   categories: any;
   images = [];
+  userProfile: any;
 
   constructor(
     private _categoryService: CategoryService,
@@ -33,7 +35,8 @@ export class CreateProductPage implements OnInit {
     private actionSheetController: ActionSheetController,
     private file: File,
     private webview: WebView,
-    private storage: Storage
+    private storage: Storage,
+    private _authService: AuthService
   ) {
     this.localStorage = localStorage;
    }
@@ -151,10 +154,15 @@ export class CreateProductPage implements OnInit {
       this.images = [newEntry, ...this.images];
       this.ref.detectChanges();
     })
+    this._authService.getUserProfile().subscribe(
+      data => {
+        this.userProfile = data;
+      }
+    );
   }
 
   createProduct(form: NgForm) {
-    this._productService.createProduct(form.value.Name, form.value.Description, form.value.Price, form.value.Category)
+    this._productService.createProduct(form.value.Name, form.value.Description, this.userProfile.Id, form.value.Price, form.value.Category)
       .subscribe(data => {
         this.alertService.presentToast("Product created succesfully!");
         form.reset();

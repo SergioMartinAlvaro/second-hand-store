@@ -19,13 +19,13 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
+      title: 'Profile',
+      url: '/user-profile',
+      icon: 'user'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'View Products',
+      url: '/viewProducts',
       icon: 'list'
     }
   ];
