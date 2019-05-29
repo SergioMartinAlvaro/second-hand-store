@@ -84,13 +84,6 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
-<<<<<<< HEAD
-=======
-    <plugin name="cordova-plugin-camera" spec="^4.0.3">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="the app need the camera" />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="the app need the photolibrary" />
-    </plugin>
->>>>>>> 8b8750870973e03d8906a07bdc62d975ab98b52c
     <plugin name="cordova-plugin-app-preferences" spec="https://github.com/vash15/me.apla.cordova.app-preferences" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="^5.0.1" />

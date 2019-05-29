@@ -1,7 +1,7 @@
 // Login, registration, logout and get info of user
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { tap, first } from 'rxjs/operators';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { EnvService } from './env.service';
 import { User } from '../models/user';
@@ -72,7 +72,7 @@ export class AuthService {
 
   user() {
     const headers = new HttpHeaders({
-      'Authorization': "Bearer " + this.token["token"]
+      'Authorization': "Bearer " + this.localStorage["token"]
     });
 
     return this.http.get<User>(this.env.API_URL + 'api/UserProfile', {headers:headers})
@@ -82,6 +82,15 @@ export class AuthService {
         })
       );
 
+  }
+
+  editProfile(id: string, nickName: string, firstName: string, lastName: string, email: string, userType: string) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    const data = {NickName: nickName, FirstName: firstName, LastName: lastName, Email: email, UserType: userType};
+    console.log(data);
+    return this.http.put(this.env.API_URL + 'api/UserProfile/' + id, data, {headers: headers});
   }
 
   getToken() {

@@ -49,6 +49,12 @@ export class CreateProductPage implements OnInit {
       }
     );
 
+    this._authService.getUserProfile().subscribe(
+      data => {
+        this.userProfile = data;
+      }
+    );
+
     this.plt.ready().then(() => {
       this.loadStoredImages();
     });
@@ -154,19 +160,19 @@ export class CreateProductPage implements OnInit {
       this.images = [newEntry, ...this.images];
       this.ref.detectChanges();
     })
-    this._authService.getUserProfile().subscribe(
-      data => {
-        this.userProfile = data;
-      }
-    );
   }
 
   createProduct(form: NgForm) {
-    this._productService.createProduct(form.value.Name, form.value.Description, this.userProfile.Id, form.value.Price, form.value.Category)
-      .subscribe(data => {
-        this.alertService.presentToast("Product created succesfully!");
-        form.reset();
-      });
+    if(form.value.Name && form.value.Description && form.value.Price && form.value.Category) {
+        this._productService.createProduct(form.value.Name, form.value.Description, form.value.Price, form.value.Category, this.userProfile.Id)
+        .subscribe(data => {
+          this.alertService.presentToast("Product created succesfully!");
+          form.reset();
+        });
+    } else {
+      this.alertService.presentToast("All fields must be filled, review the formulary.");
+    }
+
   }
 
   onChange(value) {
