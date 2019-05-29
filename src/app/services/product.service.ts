@@ -21,6 +21,7 @@ export class ProductService {
       'Authorization': "Bearer " + this.localStorage["token"]
     });
     var data = {ProductName: name, ProductDescription: description, ProductImage: "default.jpg", UserId: 1, ProductPrice: price, CategoryId: categoryId};
+    console.log(data);
     return this.http.post(this.env.API_URL + 'api/ProductModels', data, {headers : headers});
   }
 

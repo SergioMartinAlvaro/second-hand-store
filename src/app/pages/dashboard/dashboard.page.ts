@@ -3,7 +3,6 @@ import { User } from 'src/app/models/user';
 import { MenuController, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Category } from 'src/app/models/category';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { CategoryService } from './../../services/category.service';
 import { CreateProductPage } from '../product/create-product/create-product.page';
 
@@ -40,6 +39,7 @@ export class DashboardPage implements OnInit {
     this.authService.getUserProfile().subscribe(
       data => {
         this.userProfile = data;
+        console.log(this.userProfile);
       }
     )
 

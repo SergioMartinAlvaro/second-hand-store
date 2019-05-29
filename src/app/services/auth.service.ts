@@ -6,7 +6,6 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { EnvService } from './env.service';
 import { User } from '../models/user';
 import { Storage } from '@ionic/storage';
-import * as jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'

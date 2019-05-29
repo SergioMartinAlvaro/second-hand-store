@@ -27,7 +27,18 @@
             <ion-select-option  *ngFor="let category of categories"  [value]="category.categoryId">{{category.categoryName}}</ion-select-option>
         </ion-select>
       </ion-item>
+
       <br>
       <ion-button type="submit" expand="full" class="create" color="#166B0A">Create Product</ion-button>
     </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="#33CD1E" class="photo">
+    <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
+      <ion-icon name="camera" slot="start">
+        Select image for the product
+      </ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

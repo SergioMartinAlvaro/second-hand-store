@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="userProfile != null">
   <div *ngFor="let category of categories" class="category-block">
     <ion-row no-padding class="category-banner">
       <ion-col text-left button tappable align-self-center (click)="category.expanded = !category.expanded">
