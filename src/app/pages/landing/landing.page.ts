@@ -29,6 +29,7 @@ export class LandingPage implements OnInit {
   }
 
   ngOnInit() {
+    window.localStorage.clear();
   }
 
   async register() {

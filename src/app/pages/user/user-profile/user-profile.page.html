@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>user-profile</ion-title>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title>Edit Profile</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content padding *ngIf="userProfile != null">
     <form #form="ngForm" (ngSubmit)="editProfile(form)" method="put">
         <ion-item>
@@ -25,7 +28,7 @@
     
       <ion-item>
         <ion-label position="floating">User Type: </ion-label>
-        <ion-select #S position="floating" (ionChange)="onChange(S.value)" ngModel name="User Type">
+        <ion-select #S position="floating" (ionChange)="onChange(S.value)" ngModel name="UserType">
             <ion-select-option  *ngFor="let userType of getUserTypes()"  [value]="userType">{{userType}}</ion-select-option>
         </ion-select>
       </ion-item>
