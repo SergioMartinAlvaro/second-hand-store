@@ -29,4 +29,12 @@ export class CategoryService {
     });
     return this.http.get(this.env.API_URL + 'api/Category/' + id, {headers : headers});
   }
+
+  createCategory(categoryName:string, categoryDescription:string) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    const data = {CategoryName: categoryName, CategoryDescription: categoryDescription, CategoryImage: "/default.jpg"};
+    return this.http.post(this.env.API_URL + 'api/Category', data, {headers : headers});
+  }
 }

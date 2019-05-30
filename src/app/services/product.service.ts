@@ -16,7 +16,7 @@ export class ProductService {
       this.localStorage = localStorage;
      }
 
-  createProduct(name:string, description:string, price:number, categoryId:any, userId: any) {
+  createProduct(userId: any, name:string, description:string, price:number, categoryId:any) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer " + this.localStorage["token"]
     });

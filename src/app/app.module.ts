@@ -14,11 +14,12 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { CategoryComponent } from './pages/category/category.component';
 import { ProductPageModule } from './pages/product/product.module';
 import { LandingPageModule } from './pages/landing/landing.module';
+import { CategoryComponentModule } from './pages/category/category.module';
 import { LandingPage } from './pages/landing/landing.page';
 import { DashboardPageModule } from './pages/dashboard/dashboard.module';
 
 @NgModule({
-  declarations: [AppComponent, CategoryComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
 BrowserModule,
@@ -26,6 +27,7 @@ BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ProductPageModule,
+    CategoryComponentModule
   ],
   providers: [
     StatusBar,

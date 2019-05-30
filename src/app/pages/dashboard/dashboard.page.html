@@ -36,22 +36,6 @@
 <div *ngIf="userProfile != null">
   <ion-fab-button size="small" *ngIf="userProfile.userType == 'Company'" routerLink="/create-product">+</ion-fab-button>
 </div>
-<!-- 
-<ion-content padding>
-  <h1>SERGIO'S ONLINE SHOP</h1>
-  <br>
-  <div *ngIf="user != undefined">
-    <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let category of categories" col-6 no-padding>
-          <ion-card-header>
-            {{category.categoryName}}
-          </ion-card-header>
-          <ion-card-content class="fixline" routerLink="/category/{{category.categoryId}}">
-            This is the space where should be an image.
-          </ion-card-content>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</ion-content>  -->
+<div *ngIf="userProfile != null">
+  <ion-fab-button size="small" *ngIf="userProfile.userType == 'Administrator'" routerLink="/create-category">+</ion-fab-button>
+</div>

@@ -12,7 +12,7 @@ import { TouchSequence } from 'selenium-webdriver';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public appPages = [
+  public appPagesUser = [
     {
       title: 'Dashboard',
       url: '/dashboard',
@@ -24,12 +24,49 @@ export class AppComponent {
       icon: 'user'
     },
     {
-      title: 'View Products',
+      title: 'Shopping Cart',
+      url: '/shopping-cart',
+      icon: 'list'
+    }
+  ];
+
+  public appPagesCompany = [
+    {
+      title: 'Dashboard',
+      url: '/dashboard',
+      icon: 'home'
+    },
+    {
+      title: 'Profile',
+      url: '/user-profile',
+      icon: 'user'
+    },
+    {
+      title: 'View my Products',
       url: '/viewProducts',
       icon: 'list'
     }
   ];
 
+  public appPagesAdministrator = [
+    {
+      title: 'Dashboard',
+      url: '/dashboard',
+      icon: 'home'
+    },
+    {
+      title: 'Profile',
+      url: '/user-profile',
+      icon: 'user'
+    },
+    {
+      title: 'View my categories',
+      url: '/category',
+      icon: 'list'
+    }
+  ];
+
+  user: any;
   localStorage: any;
   token: any;
 
@@ -48,6 +85,9 @@ export class AppComponent {
 
   ngOnInit() {
     //this.token = this.localStorage["token"];
+    this.authService.getUserProfile().subscribe(data => {
+      this.user = data;
+    }); 
   }
 
   ionViewWillEnter() {

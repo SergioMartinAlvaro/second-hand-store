@@ -11,7 +11,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryComponent implements OnInit {
 
   categoryId: any;
-  category: Category;
+  categories: any;
   token: any;
   private localStorage: any;
 
@@ -23,31 +23,9 @@ export class CategoryComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.categoryId = Number.parseInt(params['categoryId']);
-   });
-
-   console.log(this.localStorage);
-   this.token = this.localStorage["token"];
-   console.log(this.token);
-
-   try {
-    this._categoryService.getCategory(this.categoryId).subscribe(
-      data => {
-        var selectedCategory = new Category(
-          data["categoryId"],
-          data["categoryName"],
-          data["categoryDescription"],
-          data["categoryImage"],
-          data["products"]
-        );
-        this.category = selectedCategory;
-      }
-    )
-   } catch(e) {
-
-   }
- 
+    this._categoryService.getCategories().subscribe(data => {
+      this.categories = data;
+    });
   }
 
 }

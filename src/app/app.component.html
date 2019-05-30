@@ -6,9 +6,29 @@
           <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+      <ion-content *ngIf="user != null">
+        <ion-list *ngIf="user.userType == 'User'">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesUser">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-list *ngIf="user.userType == 'Company'">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesCompany">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-list *ngIf="user.userType == 'Administrator'">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPagesAdministrator">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>

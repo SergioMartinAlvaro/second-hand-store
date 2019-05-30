@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title>Create a new category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form #form="ngForm" (ngSubmit)="createCategory(form)" method="post">
+        <ion-item>
+            <ion-label position="floating">Name: </ion-label>
+            <ion-input ngModel name="Name"></ion-input>
+        </ion-item>
+      <ion-item>
+          <ion-label position="floating">Description: </ion-label>
+          <ion-input ngModel name="Description"></ion-input>
+      </ion-item>
+  
+      <br>
+      <ion-button type="submit" expand="full" class="create" color="#166B0A">Create Product</ion-button>
+    </form>
+</ion-content>

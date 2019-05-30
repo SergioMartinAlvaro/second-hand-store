@@ -1,31 +1,19 @@
-
-
-
-<!-- <ion-header>
+ <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Dashboard</ion-title>
+    <ion-title>Edit Categories</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <br>
-  <div *ngIf="token != undefined">
-    <ion-grid>
-      <ion-row *ngIf="category">
-        <ion-col *ngFor="let product of category.Products" size="12" size-sm size-md no-padding class="img-product-row">
-          <ion-card-header>
-            <h2 style="align:centre">{{product.productName}}</h2>
-          </ion-card-header>
-          <ion-card-content class="fixline">
-            <ion-img src="../../../assets/img/sample.jpg" class="img-product"></ion-img>
-          </ion-card-content>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <div *ngFor="let category of categories" class="category-block">
+    <ion-row no-padding class="category-banner">
+      <ion-col text-left button tappable align-self-center>
+          {{category.categoryName}}
+      </ion-col>
+    </ion-row>
   </div>
+ 
 </ion-content>
-
--->
