@@ -37,4 +37,12 @@ export class CategoryService {
     const data = {CategoryName: categoryName, CategoryDescription: categoryDescription, CategoryImage: "/default.jpg"};
     return this.http.post(this.env.API_URL + 'api/Category', data, {headers : headers});
   }
+
+  updateCategory(categoryId:number, categoryName:string, categoryDescription:string) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    const data = {CategoryId: categoryId, CategoryName: categoryName, CategoryDescription: categoryDescription, CategoryImage: "/default.jpg"};
+    return this.http.put(this.env.API_URL + 'api/Category/' + categoryId, data, {headers : headers});
+  }
 }

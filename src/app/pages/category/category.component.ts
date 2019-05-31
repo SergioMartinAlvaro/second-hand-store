@@ -15,6 +15,19 @@ export class CategoryComponent implements OnInit {
   token: any;
   private localStorage: any;
 
+  public categoryOptions = [
+    {
+      title: "Edit",
+      image: "edit.png",
+      routerLink: '/update-category/'
+    },
+    {
+      title: "Delete",
+      image: "delete.png",
+      routerLink: '/delete-category/'
+    }
+];
+
   constructor( 
     private route: ActivatedRoute,
     private router: Router,

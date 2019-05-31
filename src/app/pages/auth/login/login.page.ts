@@ -46,13 +46,23 @@ export class LoginPage implements OnInit {
         this.navCtrl.navigateRoot('/');
       },
       error => {
-        console.log(error);
+        this.handleError(error);
       },
       () => {
         this.dimissLogin();
         this.navCtrl.navigateRoot('/dashboard');
       }
     )
+  }
+
+  private handleError(error) {
+    if(error.status == 500) {
+      this.alertService.presentToast("Database not available, contact with IT team.");
+    } else if(error.status == 400) {
+      this.alertService.presentToast("Incorrect Login, please, review the form.");
+    } else {
+      this.alertService.presentToast("Unexpected error, contact with IT team.");
+    }
   }
 
 }

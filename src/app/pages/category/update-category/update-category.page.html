@@ -4,22 +4,24 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
       <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
-    <ion-title>Create a new category</ion-title>
+    <ion-title>Update Category</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <form #form="ngForm" (ngSubmit)="createCategory(form)" method="post">
+<ion-content padding *ngIf="category">
+    <form #form="ngForm" (ngSubmit)="updateCategory(form)" method="put">
         <ion-item>
             <ion-label position="floating">Name: </ion-label>
-            <ion-input ngModel name="Name"></ion-input>
+            <br>
+            <ion-input ngModel name="Name" placeholder="{{category.categoryName}}"></ion-input>
         </ion-item>
       <ion-item>
           <ion-label position="floating">Description: </ion-label>
-          <ion-input ngModel name="Description"></ion-input>
+          <br>
+          <ion-input ngModel name="Description" placeholder="{{category.categoryDescription}}"></ion-input>
       </ion-item>
   
       <br>
-      <ion-button type="submit" expand="full" class="create" color="#166B0A">Create Category</ion-button>
+      <ion-button type="submit" expand="full" class="create" color="#166B0A">Update Category</ion-button>
     </form>
 </ion-content>

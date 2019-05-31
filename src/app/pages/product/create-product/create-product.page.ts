@@ -164,7 +164,7 @@ export class CreateProductPage implements OnInit {
 
   createProduct(form: NgForm) {
     if(form.value.Name && form.value.Description && form.value.Price && form.value.Category) {
-        this._productService.createProduct(form.value.Name, form.value.Description, form.value.Price, form.value.Category, this.userProfile.Id)
+        this._productService.createProduct(this.userProfile.Id, form.value.Name, form.value.Description, form.value.Price, form.value.Category)
         .subscribe(data => {
           this.alertService.presentToast("Product created succesfully!");
           form.reset();

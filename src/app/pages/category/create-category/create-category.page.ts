@@ -10,6 +10,12 @@ import { AlertService } from './../../../services/alert.service';
 })
 export class CreateCategoryPage implements OnInit {
 
+  sliderConfig = {
+    spaceBetween: 10,
+    centeredSlides: true,
+    slidesPerView: 1.6
+  }
+
   constructor(
     private _categoryService: CategoryService,
     private alertService: AlertService
@@ -22,11 +28,15 @@ export class CreateCategoryPage implements OnInit {
   createCategory(form: NgForm) {
     try {
       if(form.value.Name && form.value.Description) {
-        this._categoryService.createCategory(form.value.Name, form.value.Description)
-        .subscribe(data => {
-          this.alertService.presentToast("Category created succesfully!");
-          form.reset();
-        });
+        if(form.value.Name.length < 16) {
+          this._categoryService.createCategory(form.value.Name, form.value.Description)
+          .subscribe(data => {
+            this.alertService.presentToast("Category created succesfully!");
+            form.reset();
+          });
+        } else {
+          this.alertService.presentToast("Category name cannot has more than 9 chars.");
+        }
       } else {
         this.alertService.presentToast("Please, fill all the fields to create a new category.");
       }

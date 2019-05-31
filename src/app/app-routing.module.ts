@@ -5,7 +5,7 @@ import { AuthGuard } from './guard/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   { path: 'landing', loadChildren: './pages/landing/landing.module#LandingPageModule' },
@@ -19,6 +19,8 @@ const routes: Routes = [
   { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },
   { path: 'user-profile', loadChildren: './pages/user/user-profile/user-profile.module#UserProfilePageModule' },
   { path: 'create-category', loadChildren: './pages/category/create-category/create-category.module#CreateCategoryPageModule' },
+  { path: 'update-category/:categoryId', loadChildren: './pages/category/update-category/update-category.module#UpdateCategoryPageModule' },
+
  // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate:[AuthGuard]},
  // { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard]},
 ];
