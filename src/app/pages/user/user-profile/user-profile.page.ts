@@ -30,6 +30,7 @@ export class UserProfilePage implements OnInit {
     if(form.value.nickName, form.value.firstName, form.value.lastName, form.value.email, form.value.UserType) {
       this._authService.editProfile(this.userProfile.id, form.value.nickName, form.value.firstName, form.value.lastName, 
         form.value.email, form.value.UserType).subscribe(data => {
+          this.userProfile = data;
           this.alertService.presentToast("User updated succesfully!");
           form.reset();
         });

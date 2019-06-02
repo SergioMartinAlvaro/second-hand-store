@@ -33,9 +33,63 @@
     </ion-slides>
   </div>
 </ion-content>
+
+<!-- Mover a un componente menu -->
 <div *ngIf="userProfile != null">
-  <ion-fab-button size="small" *ngIf="userProfile.userType == 'Company'" routerLink="/create-product">+</ion-fab-button>
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.userType == 'Company'">
+        <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button routerLink="/create-product" data-desc="Create product">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/product" data-desc="View my products">
+              <ion-icon name="list"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+      </ion-fab>
+  <!-- ADMIN -->
 </div>
 <div *ngIf="userProfile != null">
-  <ion-fab-button size="small" *ngIf="userProfile.userType == 'Administrator'" routerLink="/create-category">+</ion-fab-button>
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.userType == 'Administrator'">
+        <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button routerLink="/create-category" data-desc="Create category">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/category" data-desc="View my categories">
+              <ion-icon name="list"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
+              <ion-icon name="person"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/shopping-cart" data-desc="Shopping Cart">
+              <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="logout()" data-desc="Log-out">
+              <ion-icon name="log-out"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+      </ion-fab>
+</div>
+<div *ngIf="userProfile != null">
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.userType == 'User'">
+        <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
+              <ion-icon name="person"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/shopping-cart" data-desc="Shopping Cart">
+              <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="logout()" data-desc="Log-out">
+              <ion-icon name="log-out"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+      </ion-fab>
 </div>

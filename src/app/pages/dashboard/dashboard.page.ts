@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { MenuController, ModalController } from '@ionic/angular';
+import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from './../../services/category.service';
 import { CreateProductPage } from '../product/create-product/create-product.page';
+import { AlertService } from 'src/app/services/alert.service';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,6 +30,8 @@ export class DashboardPage implements OnInit {
     private authService: AuthService,
     private _categoryService: CategoryService,
     private modalController: ModalController,
+    private alertService: AlertService,
+    private navCtrl: NavController
   ) {
     this.menu.enable(true);
     this.localStorage = localStorage;
@@ -71,6 +75,12 @@ export class DashboardPage implements OnInit {
         console.log(this.categories);
       }
     )
+  }
+
+  logout() {
+    this.authService.logout();
+    this.navCtrl.navigateRoot('/landing');
+    this.alertService.presentToast("Logout correctly!");
   }
 
 }

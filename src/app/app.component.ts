@@ -30,42 +30,6 @@ export class AppComponent {
     }
   ];
 
-  public appPagesCompany = [
-    {
-      title: 'Dashboard',
-      url: '/dashboard',
-      icon: 'home'
-    },
-    {
-      title: 'Profile',
-      url: '/user-profile',
-      icon: 'user'
-    },
-    {
-      title: 'View my Products',
-      url: '/viewProducts',
-      icon: 'list'
-    }
-  ];
-
-  public appPagesAdministrator = [
-    {
-      title: 'Dashboard',
-      url: '/dashboard',
-      icon: 'home'
-    },
-    {
-      title: 'Profile',
-      url: '/user-profile',
-      icon: 'user'
-    },
-    {
-      title: 'View my categories',
-      url: '/category',
-      icon: 'list'
-    }
-  ];
-
   user: any;
   localStorage: any;
   token: any;
@@ -100,19 +64,5 @@ export class AppComponent {
       // this.splashScreen.hide();
       this.authService.getToken();
     });
-  }
-
-  logout() {
-    this.authService.logout().subscribe(
-      data => {
-        this.alertService.presentToast(data['message']);
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        this.navCtrl.navigateRoot('/landing');
-      }
-    )
   }
 }
