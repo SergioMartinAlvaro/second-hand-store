@@ -47,6 +47,15 @@
             <ion-fab-button routerLink="/product" data-desc="View my products">
               <ion-icon name="list"></ion-icon>
             </ion-fab-button>
+            <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
+              <ion-icon name="person"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/shopping-cart" data-desc="Shopping Cart">
+              <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="logout()" data-desc="Log-out">
+              <ion-icon name="log-out"></ion-icon>
+            </ion-fab-button>
           </ion-fab-list>
       </ion-fab>
   <!-- ADMIN -->

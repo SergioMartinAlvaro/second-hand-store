@@ -47,6 +47,12 @@ export class DashboardPage implements OnInit {
       }
     )
 
+    this.authService.user().subscribe(
+      user => {
+        this.user = user;
+      }
+    );
+
     this._categoryService.getCategories().subscribe(
       data => {
         this.categories = data;
@@ -63,16 +69,17 @@ export class DashboardPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.authService.user().subscribe(
-      user => {
-        this.user = user;
-      }
-    )
-
     this._categoryService.getCategories().subscribe(
       data => {
         this.categories = data;
         console.log(this.categories);
+      }
+    )
+
+    this.authService.getUserProfile().subscribe(
+      data => {
+        this.userProfile = data;
+        console.log(this.userProfile);
       }
     )
   }
