@@ -14,7 +14,7 @@ export class ProductService {
     private storage: NativeStorage,
     private env: EnvService) {
       this.localStorage = localStorage;
-     }
+    }
 
   createProduct(userId: any, name:string, description:string, price:number, categoryId:any) {
     const headers = new HttpHeaders({

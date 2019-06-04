@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AlertService } from './../../../services/alert.service';
 import { LoginPage } from './../login/login.page';
 import { NgForm } from '@angular/forms';
+import { ShoppingcartServiceService } from 'src/app/services/shoppingcart-service.service';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +13,13 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterPage implements OnInit {
 
+  id: any;
+
   constructor(private modalController: ModalController,
     private authService: AuthService,
     private navCtrl: NavController,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private _shoppingCartService: ShoppingcartServiceService) { }
 
   ngOnInit() {
   }
@@ -41,21 +45,8 @@ export class RegisterPage implements OnInit {
     this.authService.register(form.value.uName, form.value.fName, form.value.lName, 
       form.value.email, form.value.password, form.value.UserType).subscribe(
         data => {
-          console.log(data);
+          this.id = form.value.uName;
           console.log("Correct");
-          /* this.authService.login(form.value.email,
-            form.value.password).subscribe(
-              data => {
-
-              },
-              error => {
-                console.log(error);
-              },
-              () => {
-                this.dimissRegister();
-                this.navCtrl.navigateRoot("/dashboard");
-              }
-            ); */
             this.alertService.presentToast("User " + form.value.uName +" registered.");
             this.dimissRegister();
            // this.navCtrl.navigateRoot("/dashboard");
@@ -64,9 +55,18 @@ export class RegisterPage implements OnInit {
           console.log(error);
         },
         () => {
-
+          console.log(this.id);
+          this.createShoppingCart();
         }
       );
+  }
+
+  createShoppingCart() {
+    this._shoppingCartService.createShoppingCart(this.id).subscribe( 
+      data => {
+        console.log(data);
+      }
+    )
   }
 
   onChange(value) {

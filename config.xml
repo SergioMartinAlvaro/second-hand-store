@@ -82,9 +82,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^3.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
-    <plugin name="cordova-plugin-app-preferences" spec="https://github.com/vash15/me.apla.cordova.app-preferences" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="^5.0.1" />
 </widget>
