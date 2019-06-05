@@ -25,5 +25,12 @@ export class ShoppingcartServiceService {
       console.log(data);
       return this.http.post(this.env.API_URL + 'api/ShoppingCartModels', data, {headers : headers});
     }
+
+    getShoppingCart(user: any) {
+      const headers = new HttpHeaders({
+              'Authorization': "Bearer " + this.localStorage["token"]
+      });
+      return this.http.get(this.env.API_URL + 'api/ShoppingCartModels/' + user , {headers : headers});
+    }
   }
 

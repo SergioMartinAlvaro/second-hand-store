@@ -50,7 +50,7 @@
             <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
               <ion-icon name="person"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button routerLink="/shopping-cart" data-desc="Shopping Cart">
+            <ion-fab-button routerLink="/shopping-cart/{{userProfile.nickName}}" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
             </ion-fab-button>
             <ion-fab-button (click)="logout()" data-desc="Log-out">
@@ -75,7 +75,7 @@
             <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
               <ion-icon name="person"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button routerLink="/shopping-cart" data-desc="Shopping Cart">
+            <ion-fab-button routerLink="/shopping-cart/{{userProfile.nickName}}" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
             </ion-fab-button>
             <ion-fab-button (click)="logout()" data-desc="Log-out">
@@ -93,7 +93,7 @@
             <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
               <ion-icon name="person"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button routerLink="/shopping-cart" data-desc="Shopping Cart">
+            <ion-fab-button routerLink="/shopping-cart/{{userProfile.nickName}}" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
             </ion-fab-button>
             <ion-fab-button (click)="logout()" data-desc="Log-out">

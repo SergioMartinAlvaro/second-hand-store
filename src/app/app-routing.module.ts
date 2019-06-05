@@ -20,6 +20,8 @@ const routes: Routes = [
   { path: 'user-profile', loadChildren: './pages/user/user-profile/user-profile.module#UserProfilePageModule' },
   { path: 'create-category', loadChildren: './pages/category/create-category/create-category.module#CreateCategoryPageModule' },
   { path: 'update-category/:categoryId', loadChildren: './pages/category/update-category/update-category.module#UpdateCategoryPageModule' },
+  { path: 'shopping-cart/:userId', loadChildren: './pages/shopping-cart/shopping-cart.module#ShoppingCartPageModule' },
+
 
  // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate:[AuthGuard]},
  // { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard]},

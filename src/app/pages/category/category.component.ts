@@ -33,7 +33,7 @@ export class CategoryComponent implements OnInit {
     private router: Router,
     private _categoryService: CategoryService) {
       this.localStorage = localStorage;
-     }
+  }
 
   ngOnInit() {
     this._categoryService.getCategories().subscribe(data => {
