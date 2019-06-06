@@ -2,7 +2,7 @@ export class ShoppingCart {
     shoppingCartId: number;
     cartStatus: boolean;
     user: string;
-    Products: any[];
+    Products: any;
 
     constructor(shoppingCartId?: number, cartStatus?: boolean, user?: string) {
             this.shoppingCartId = shoppingCartId;

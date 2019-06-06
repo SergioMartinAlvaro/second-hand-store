@@ -29,14 +29,12 @@ export class ShoppingCartPage implements OnInit {
         this.shoppingCart.cartStatus = data[0]["cartStatus"];
         this.shoppingCart.shoppingCartId = data[0]["shoppingCartId"];
         this.shoppingCart.user = data[0]["user"];
+        this._shoppingCartService.getShoppingCartProducts(this.shoppingCart.shoppingCartId)
+        .subscribe(data => {
+          this.shoppingCart.Products = data;
+        });
       }
     );
-    console.log(this.shoppingCart);
-  }
-
-  getShoppingCart(userId: string) {
-
-    console.log(this.shoppingCart);
-  }
+    }
 
 }

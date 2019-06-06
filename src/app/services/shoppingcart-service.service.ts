@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { EnvService } from './env.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ShoppingCart } from '../models/shopping-cart';
+import { tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -30,7 +32,27 @@ export class ShoppingcartServiceService {
       const headers = new HttpHeaders({
               'Authorization': "Bearer " + this.localStorage["token"]
       });
-      return this.http.get(this.env.API_URL + 'api/ShoppingCartModels/' + user , {headers : headers});
+      return this.http.get<ShoppingCart>(this.env.API_URL + 'api/ShoppingCartModels?user=' + user , {headers : headers})
+      .pipe(
+        tap(shoppingCart => {
+          return shoppingCart;
+        })
+      );
+    }
+
+    addProductToShoppingCart(cartId: number, productId: number) {
+      const headers = new HttpHeaders({
+        'Authorization': "Bearer " + this.localStorage["token"]
+      });
+      const data = {ProductId: productId, ShoppingCartId: cartId };
+      return this.http.post(this.env.API_URL + 'api/ShoppingCartTransactionsModels' , data, {headers : headers});
+    }
+
+    getShoppingCartProducts(id: number) {
+      const headers = new HttpHeaders({
+        'Authorization': "Bearer " + this.localStorage["token"]
+      });
+      return this.http.get(this.env.API_URL + 'api/ShoppingCartTransactionsModels/' + id , {headers : headers});
     }
   }
 
