@@ -9,6 +9,7 @@
     <ion-list *ngFor="let product of this.shoppingCart.Products">
         <ion-item>
           <ion-label>{{product.productName}}</ion-label>
+          <ion-label (click)="deleteTransaction(product.id)">X</ion-label>
         </ion-item>
       </ion-list>
 </ion-content>

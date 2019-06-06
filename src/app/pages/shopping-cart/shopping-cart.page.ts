@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingcartServiceService } from '../../services/shoppingcart-service.service';
 import { ShoppingCart } from '../../models/shopping-cart';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,7 +17,9 @@ export class ShoppingCartPage implements OnInit {
   constructor( 
     private route: ActivatedRoute,
     private router: Router,
-    private _shoppingCartService: ShoppingcartServiceService) {
+    private _shoppingCartService: ShoppingcartServiceService,
+    private _alertService: AlertService
+    ) {
       this.localStorage = localStorage;
   }
 
@@ -35,6 +38,17 @@ export class ShoppingCartPage implements OnInit {
         });
       }
     );
+    }
+
+    deleteTransaction(id: number) {
+      console.log(id);
+
+      this._shoppingCartService.deleteShoppingCartTransaction(id).subscribe(
+        data => {
+          this.shoppingCart.Products.map((x,y) => x.id == id ? this.shoppingCart.Products.splice(y,1) : '');
+          this._alertService.presentToast("Removed product from shopping cart.");
+        }
+      )
     }
 
 }
