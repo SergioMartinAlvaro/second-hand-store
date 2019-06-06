@@ -1,10 +1,12 @@
 // Login, registration, logout and get info of user
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { tap, first } from 'rxjs/operators';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { EnvService } from './env.service';
 import { User } from '../models/user';
+import { Storage } from '@ionic/storage';
+import { NavController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -13,25 +15,35 @@ export class AuthService {
 
   isLoggedIn = false;
   token:any;
+  private localStorage: any;
 
   constructor(
     private http: HttpClient,
     private storage: NativeStorage,
-    private env: EnvService
-  ) { }
+    private env: EnvService,
+    private navCtrl: NavController,
+  ) { 
+    this.localStorage = localStorage;
+  }
+
+  getUserProfile() {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    return this.http.get(this.env.API_URL + 'api/UserProfile', {headers: headers}
+    );
+  }
 
   login(email: String, password: String) {
-    return this.http.post(this.env.API_URL + 'auth/login',
-    {email: email, password: password}
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*'
+    });
+    var data = {NickName: email, Password: password};
+    return this.http.post(this.env.API_URL + 'api/login', 
+    data, {headers: headers}
     ).pipe(
       tap(token => {
-        this.storage.setItem('token', token)
-        .then(
-          () => {
-            console.log('Token Stored');
-          },
-          error => console.error('Error storing item', error)
-        );
+        this.localStorage.setItem("token", token["token"]);
         this.token = token;
         this.isLoggedIn = true;
         return token;
@@ -39,38 +51,38 @@ export class AuthService {
     );
   }
 
-  register(fName: String, lName: String, email: String, password: String) {
-    return this.http.post(this.env.API_URL + 'auth/register',
-      {fName: fName, lName: lName, email: email, password: password})
+  register(uName: String, fName: String, lName: String, email: String, password: String, userType: string) {
+    return this.http.post(this.env.API_URL + 'api/register',
+      {NickName: uName, FirstName: fName, LastName: lName, Email: email, Password: password, UserType: userType})
   }
 
   logout() {
-    const headers = new HttpHeaders({
-      'Authorization': this.token['token_type'] + '' + this.token['access_token']
-    });
-
-    return this.http.get(this.env.API_URL + 'auth/logout', { headers: headers})
-      .pipe(
-        tap(data => {
-          this.storage.remove('token');
-          this.isLoggedIn = false;
-          delete this.token;
-          return data;
-        })
-      )
+    this.storage.remove('token');
+    this.isLoggedIn = false;
+    delete this.token;
   }
 
   user() {
     const headers = new HttpHeaders({
-      'Authorization': this.token["token_type"]+""+this.token["access_token"]
+      'Authorization': "Bearer " + this.localStorage["token"]
     });
 
-    return this.http.get<User>(this.env.API_URL + 'auth/user', {headers:headers})
+    return this.http.get<User>(this.env.API_URL + 'api/UserProfile', {headers:headers})
       .pipe(
         tap(user => {
           return user;
         })
-      )
+      );
+
+  }
+
+  editProfile(id: string, nickName: string, firstName: string, lastName: string, email: string, userType: string) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    const data = {NickName: nickName, FirstName: firstName, LastName: lastName, Email: email, UserType: userType};
+    console.log(data);
+    return this.http.put(this.env.API_URL + 'api/UserProfile/' + id, data, {headers: headers});
   }
 
   getToken() {

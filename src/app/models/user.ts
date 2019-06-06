@@ -1,6 +1,11 @@
+import { ShoppingCart } from './shopping-cart';
+
 export class User {
-    id: number;
-    first_name: string;
-    last_name: string;
-    email: string;
+    UserId: string;
+    NickName: string;
+    FirstName: string;
+    LastName: string;
+    UserType: string;
+    Email: string;
+    ShoppingCart: ShoppingCart;
 }

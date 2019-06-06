@@ -1,9 +1,104 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>SmintBuster</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content *ngIf="userProfile != null">
+  <div *ngFor="let category of categories" class="category-block">
+    <ion-row no-padding class="category-banner">
+      <ion-col text-left button tappable align-self-center (click)="category.expanded = !category.expanded">
+          {{category.categoryName}}
+      </ion-col>
+    </ion-row>
+    <ion-slides [options]="sliderConfig">
+        <ion-slide *ngFor="let product of category.products">
+          <div *ngIf="category.expanded">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>
+                  {{product.productName}}
+                </ion-card-title>
+                <ion-card-content>
+                  <img src="../../../assets/img/sample.jpg" style="height:150px; width:300px" routerLink="/product-view/{{product.productId}}">
+                  <ion-button expand="full" (click)="addToShoppingCart(product.productId)">Add to Cart</ion-button>
+                </ion-card-content>
+              </ion-card-header>
+            </ion-card>
+          </div>
+          </ion-slide>
+    </ion-slides>
+  </div>
 </ion-content>
+
+<!-- Mover a un componente menu -->
+<div *ngIf="userProfile != null">
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'Company'">
+        <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button routerLink="/create-product" data-desc="Create product">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/product" data-desc="View my products">
+              <ion-icon name="list"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
+              <ion-icon name="person"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
+              <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="logout()" data-desc="Log-out">
+              <ion-icon name="log-out"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+      </ion-fab>
+  <!-- ADMIN -->
+</div>
+<div *ngIf="userProfile != null">
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'Administrator'">
+        <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button routerLink="/create-category" data-desc="Create category">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/category" data-desc="View my categories">
+              <ion-icon name="list"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
+              <ion-icon name="person"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
+              <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="logout()" data-desc="Log-out">
+              <ion-icon name="log-out"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+      </ion-fab>
+</div>
+<div *ngIf="userProfile != null">
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'User'">
+        <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
+              <ion-icon name="person"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
+              <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="logout()" data-desc="Log-out">
+              <ion-icon name="log-out"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+      </ion-fab>
+</div>

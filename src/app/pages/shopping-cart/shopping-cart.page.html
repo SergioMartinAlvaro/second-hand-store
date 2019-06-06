@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title>Shopping Cart of {{shoppingCart.user}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let product of this.shoppingCart.Products">
+        <ion-item>
+          <ion-label>{{product.productName}}</ion-label>
+        </ion-item>
+      </ion-list>
+</ion-content>

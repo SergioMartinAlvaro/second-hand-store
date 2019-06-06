@@ -1,0 +1,36 @@
+ <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title>Edit Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let category of categories" class="category-block">
+    <ion-row no-padding class="category-banner" >
+      <ion-col text-left button tappable align-self-center (click)="category.expanded = !category.expanded">
+          {{category.categoryName}}
+      </ion-col>
+    </ion-row>
+    <ion-slides [options]="sliderConfig">
+      <ion-slide *ngFor="let categoryOption of categoryOptions">
+        <div *ngIf="category.expanded">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{categoryOption.title}}
+              </ion-card-title>
+              <ion-card-content [routerDirection]="'root'" [routerLink]="[categoryOption.routerLink + category.categoryId]">
+                <img src="../../../assets/img/{{categoryOption.image}}" style="height:50px; width:50px">
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+        </ion-slide>
+  </ion-slides>
+  </div>
+ 
+</ion-content>
