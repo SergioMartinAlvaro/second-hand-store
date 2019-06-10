@@ -16,20 +16,34 @@
       </ion-col>
     </ion-row>
     <ion-slides [options]="sliderConfig">
-      <ion-slide *ngFor="let categoryOption of categoryOptions">
+      <ion-slide>
         <div *ngIf="category.expanded">
           <ion-card>
             <ion-card-header>
               <ion-card-title>
-                {{categoryOption.title}}
+                Edit
               </ion-card-title>
-              <ion-card-content [routerDirection]="'root'" [routerLink]="[categoryOption.routerLink + category.categoryId]">
-                <img src="../../../assets/img/{{categoryOption.image}}" style="height:50px; width:50px">
+              <ion-card-content routerLink="/update-category/{{category.categoryId}}">
+                <img src="../../../assets/img/edit.png" style="height:50px; width:50px">
               </ion-card-content>
             </ion-card-header>
           </ion-card>
         </div>
         </ion-slide>
+        <ion-slide>
+          <div *ngIf="category.expanded">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>
+                  Delete
+                </ion-card-title>
+                <ion-card-content (click)="deleteCategory(category.categoryId)" >
+                  <img src="../../../assets/img/delete.png" style="height:50px; width:50px">
+                </ion-card-content>
+              </ion-card-header>
+            </ion-card>
+          </div>
+          </ion-slide>
   </ion-slides>
   </div>
  

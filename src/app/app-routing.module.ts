@@ -21,6 +21,8 @@ const routes: Routes = [
   { path: 'create-category', loadChildren: './pages/category/create-category/create-category.module#CreateCategoryPageModule' },
   { path: 'update-category/:categoryId', loadChildren: './pages/category/update-category/update-category.module#UpdateCategoryPageModule' },
   { path: 'shopping-cart/:userId', loadChildren: './pages/shopping-cart/shopping-cart.module#ShoppingCartPageModule' },
+  { path: 'update-product/:productId', loadChildren: './pages/product/update-product/update-product.module#UpdateProductPageModule' },
+
 
 
  // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate:[AuthGuard]},

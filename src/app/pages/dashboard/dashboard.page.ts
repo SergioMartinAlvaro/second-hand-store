@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
-import { Category } from 'src/app/models/category';
 import { CategoryService } from './../../services/category.service';
 import { CreateProductPage } from '../product/create-product/create-product.page';
 import { AlertService } from 'src/app/services/alert.service';
-import { Alert } from 'selenium-webdriver';
 import { ShoppingcartServiceService } from 'src/app/services/shoppingcart-service.service';
 
 @Component({
@@ -24,7 +22,6 @@ export class DashboardPage implements OnInit {
     centeredSlides: true,
     slidesPerView: 1.6
   }
-  private localStorage: any;
 
   constructor(
     private menu: MenuController,
@@ -36,7 +33,6 @@ export class DashboardPage implements OnInit {
     private _shoppingCartService: ShoppingcartServiceService
   ) {
     this.menu.enable(true);
-    this.localStorage = localStorage;
     this.userProfile = new User();
    }
 
@@ -71,7 +67,7 @@ export class DashboardPage implements OnInit {
   addToShoppingCart(productId: number) {
     var cartId = this.userProfile.ShoppingCart.shoppingCartId;
     this._shoppingCartService.addProductToShoppingCart(cartId, productId).subscribe(
-      data => {
+      () => {
         this.alertService.presentToast("Product added succesfully to shopping cart!!");
       }
     );

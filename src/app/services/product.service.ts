@@ -37,10 +37,35 @@ export class ProductService {
       }));
   }
 
+  updateProduct(productId: number, UserId: string, productName: string, productDescription: string,
+     productPrice: number, categoryId: number) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    const data = {ProductName: productName, ProductDescription: productDescription, ProductPrice: productPrice,
+      UserId: UserId, CategoryId: categoryId, ProductImage: "default.jpg", ProductId: productId};
+    return this.http.put<Product>(this.env.API_URL + 'api/ProductModels/' + productId , data, {headers : headers})
+    .pipe(
+      tap(product => {
+        return product;
+      }));
+  }
+
+  deleteProduct(id: number) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    return this.http.delete(this.env.API_URL + 'api/ProductModels/' + id , {headers : headers});
+  }
+
   getProduct(id:number) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer " + this.localStorage["token"]
     });
-    return this.http.get(this.env.API_URL + 'api/ProductModels?id=' + id , {headers : headers});
+    return this.http.get<Product>(this.env.API_URL + 'api/ProductModels?id=' + id , {headers : headers})
+    .pipe(
+      tap(product => {
+        return product;
+      }));;
   }
 }
