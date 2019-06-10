@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'category', loadChildren: './pages/category/category.module#CategoryComponentModule'},
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard] },
-  { path: 'product', loadChildren: './pages/product/product.module#ProductPageModule' },
+  { path: 'product-list', loadChildren: './pages/product/product.module#ProductPageModule' },
   { path: 'create-product', loadChildren: './pages/product/create-product/create-product.module#CreateProductPageModule' },
   { path: 'product-view/:productId', loadChildren: './pages/product/product-view/product-view.module#ProductViewPageModule' },
   { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },

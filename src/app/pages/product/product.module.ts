@@ -20,7 +20,6 @@ const routes: Routes = [
   CommonModule,
     FormsModule,
     IonicModule,
-    CreateProductPageModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ProductPage]

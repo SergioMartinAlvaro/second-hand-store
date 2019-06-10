@@ -1,0 +1,44 @@
+.img-product-row{
+    height: 60%;
+    border: 1px solid black;
+    margin-bottom: 3%;
+}
+
+.img-product{
+    width: 100%;
+    z-index: -1;
+}
+
+.fixline {
+    height: 60px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+ion-badge {
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 100%;
+}
+
+.category-block {
+    margin-bottom: 4px;
+}
+
+.category-banner {
+    border-left: 8px solid var(--ion-color-secondary);
+    background: var(--ion-color-light);
+    height: 40px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+ion-slide {
+    width: 50%;
+}
+
+.close-button {
+    float: right;
+}

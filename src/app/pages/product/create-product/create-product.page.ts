@@ -5,6 +5,7 @@ import { ProductService } from './../../../services/product.service';
 import { Category } from 'src/app/models/category';
 import { NavController, Platform, ActionSheetController } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
+import * as jwt_decode from "jwt-decode";
 import { Camera, PictureSourceType, CameraOptions } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
@@ -163,8 +164,9 @@ export class CreateProductPage implements OnInit {
   }
 
   createProduct(form: NgForm) {
+    var userId = jwt_decode(this.localStorage["token"])["UserID"];
     if(form.value.Name && form.value.Description && form.value.Price && form.value.Category) {
-        this._productService.createProduct(this.userProfile.Id, form.value.Name, form.value.Description, form.value.Price, form.value.Category)
+        this._productService.createProduct(userId, form.value.Name, form.value.Description, form.value.Price, form.value.Category)
         .subscribe(data => {
           this.alertService.presentToast("Product created succesfully!");
           form.reset();
