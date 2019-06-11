@@ -16,9 +16,13 @@ ion-badge {
     margin-bottom: 4px;
 }
 
+ion-button{
+    background-color: #166B0A!important;
+}
+
 .category-banner {
-    border-left: 8px solid var(--ion-color-secondary);
-    background: var(--ion-color-light);
+    border-left: 8px solid #166B0A;
+    background: rgb(154, 247, 142);
     height: 40px;
     padding: 10px;
     font-weight: 500;
@@ -27,6 +31,10 @@ ion-badge {
 ion-fab-button[data-desc] {
     position: relative;
   }
+
+  #circle {
+      background-color: #166B0A;
+  }
   
   ion-fab-button[data-desc]::after {
     position: absolute;
@@ -34,7 +42,7 @@ ion-fab-button[data-desc] {
     z-index: 1;
     right: 55px;
     bottom: 4px;
-    background-color: var(--ion-color-primary);
+    background-color: #166B0A;
     padding: 9px;
     border-radius: 15px;
     color: white;

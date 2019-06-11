@@ -24,7 +24,7 @@
                 </ion-card-title>
                 <ion-card-content>
                   <img src="../../../assets/img/sample.jpg" style="height:150px; width:300px" routerLink="/product-view/{{product.productId}}">
-                  <ion-button expand="full" (click)="addToShoppingCart(product.productId)">Add to Cart</ion-button>
+                  <ion-button expand="full" color="secondary" (click)="addToShoppingCart(product.productId)" class="cart-add">Add to Cart</ion-button>
                 </ion-card-content>
               </ion-card-header>
             </ion-card>
@@ -38,7 +38,7 @@
 <div *ngIf="userProfile != null">
     <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'Company'">
         <ion-fab-button>
-            <ion-icon name="add-circle"></ion-icon>
+            <ion-icon name="add-circle" color="#166B0A"></ion-icon>
           </ion-fab-button>
           <ion-fab-list side="top">
             <ion-fab-button routerLink="/create-product" data-desc="Create product">
@@ -53,6 +53,9 @@
             <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
             </ion-fab-button>
+            <ion-fab-button routerLink="/about-us" data-desc="About Us">
+              <ion-icon name="mail"></ion-icon>
+            </ion-fab-button>
             <ion-fab-button (click)="logout()" data-desc="Log-out">
               <ion-icon name="log-out"></ion-icon>
             </ion-fab-button>
@@ -63,7 +66,7 @@
 <div *ngIf="userProfile != null">
     <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'Administrator'">
         <ion-fab-button>
-            <ion-icon name="add-circle"></ion-icon>
+            <ion-icon name="add-circle" color="secondary"></ion-icon>
           </ion-fab-button>
           <ion-fab-list side="top">
             <ion-fab-button routerLink="/create-category" data-desc="Create category">
@@ -77,6 +80,9 @@
             </ion-fab-button>
             <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/about-us" data-desc="About Us">
+              <ion-icon name="mail"></ion-icon>
             </ion-fab-button>
             <ion-fab-button (click)="logout()" data-desc="Log-out">
               <ion-icon name="log-out"></ion-icon>
@@ -95,6 +101,9 @@
             </ion-fab-button>
             <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button routerLink="/about-us" data-desc="About Us">
+              <ion-icon name="mail"></ion-icon>
             </ion-fab-button>
             <ion-fab-button (click)="logout()" data-desc="Log-out">
               <ion-icon name="log-out"></ion-icon>

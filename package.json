@@ -32,6 +32,7 @@
     "@ionic/angular": "^4.1.0",
     "@ionic/storage": "^2.2.0",
     "browser": "^0.2.6",
+    "cordova": "^9.0.0",
     "cordova-android": "7.0.0",
     "cordova-browser": "6.0.0",
     "cordova-ios": "^5.0.1",

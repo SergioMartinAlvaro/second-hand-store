@@ -9,7 +9,16 @@
     <ion-list *ngFor="let product of this.shoppingCart.Products">
         <ion-item>
           <ion-label>{{product.productName}}</ion-label>
+          <ion-label><b>{{product.productPrice}} €</b></ion-label>
           <ion-label (click)="deleteTransaction(product.id)">X</ion-label>
         </ion-item>
       </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="#33CD1E" class="photo" *ngIf="totalPrice>0">
+    <ion-button fill="clear" expand="full" color="light" routerLink="/pay-shopping-cart">
+      Buy shopping cart ({{totalPrice}} €)
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
