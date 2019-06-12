@@ -1,0 +1,4 @@
+Add-Migration MigrateUsers -Context AuthenticationContext
+Add-Migration MigrateShop -Context ShopContext
+Update-Database -Context AuthenticationContext
+Update-Database -Context ShopContext
