@@ -21,7 +21,9 @@ const routes: Routes = [
   { path: 'create-category', loadChildren: './pages/category/create-category/create-category.module#CreateCategoryPageModule' },
   { path: 'update-category/:categoryId', loadChildren: './pages/category/update-category/update-category.module#UpdateCategoryPageModule' },
   { path: 'shopping-cart/:userId', loadChildren: './pages/shopping-cart/shopping-cart.module#ShoppingCartPageModule' },
-  { path: 'update-product/:productId', loadChildren: './pages/product/update-product/update-product.module#UpdateProductPageModule' },  { path: 'about-us', loadChildren: './pages/dashboard/about-us/about-us.module#AboutUsPageModule' },
+  { path: 'update-product/:productId', loadChildren: './pages/product/update-product/update-product.module#UpdateProductPageModule' },
+  { path: 'about-us', loadChildren: './pages/dashboard/about-us/about-us.module#AboutUsPageModule' },
+  { path: 'pay-shopping-cart', loadChildren: './pages/shopping-cart/pay-shopping-cart/pay-shopping-cart.module#PayShoppingCartPageModule' },
 
 
 

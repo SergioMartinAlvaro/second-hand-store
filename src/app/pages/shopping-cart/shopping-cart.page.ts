@@ -14,6 +14,7 @@ export class ShoppingCartPage implements OnInit {
   userId: string;
   localStorage: any;
   shoppingCart = new ShoppingCart();
+  totalPrice = 0;
   constructor( 
     private route: ActivatedRoute,
     private router: Router,
@@ -35,6 +36,7 @@ export class ShoppingCartPage implements OnInit {
         this._shoppingCartService.getShoppingCartProducts(this.shoppingCart.shoppingCartId)
         .subscribe(data => {
           this.shoppingCart.Products = data;
+          this.calculateTotalPrice();
         });
       }
     );
@@ -46,9 +48,15 @@ export class ShoppingCartPage implements OnInit {
       this._shoppingCartService.deleteShoppingCartTransaction(id).subscribe(
         data => {
           this.shoppingCart.Products.map((x,y) => x.id == id ? this.shoppingCart.Products.splice(y,1) : '');
+          this.calculateTotalPrice();
           this._alertService.presentToast("Removed product from shopping cart.");
         }
       )
+    }
+
+    calculateTotalPrice() {
+      this.totalPrice = 0;
+      this.shoppingCart.Products.map((x,y) => this.totalPrice += x.productPrice);
     }
 
 }
