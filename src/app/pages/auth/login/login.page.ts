@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
     } else if(error.status == 400) {
       this.alertService.presentToast("Incorrect Login, please, review the form.");
     } else {
-      this.alertService.presentToast("Unexpected error, contact with IT team.");
+      this.alertService.presentToast(error.message);
     }
   }
 

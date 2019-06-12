@@ -24,12 +24,6 @@ const routes: Routes = [
   { path: 'update-product/:productId', loadChildren: './pages/product/update-product/update-product.module#UpdateProductPageModule' },
   { path: 'about-us', loadChildren: './pages/dashboard/about-us/about-us.module#AboutUsPageModule' },
   { path: 'pay-shopping-cart', loadChildren: './pages/shopping-cart/pay-shopping-cart/pay-shopping-cart.module#PayShoppingCartPageModule' },
-
-
-
-
- // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate:[AuthGuard]},
- // { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard]},
 ];
 
 @NgModule({
