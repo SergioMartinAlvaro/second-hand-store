@@ -30,11 +30,8 @@ export class AuthService {
     const headers = new HttpHeaders({
       'Authorization': "Bearer " + this.localStorage["token"]
     });
-    return this.http.get<User>(this.env.API_URL + 'api/UserProfile', {headers: headers}
-    ).pipe(
-      tap(user => {
-        return user;
-      }));
+    return this.http.get(this.env.API_URL + 'api/UserProfile', {headers: headers}
+    );
   }
 
   login(email: String, password: String) {
