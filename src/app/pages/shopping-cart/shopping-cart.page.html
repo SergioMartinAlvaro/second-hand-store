@@ -17,7 +17,7 @@
 
 <ion-footer>
   <ion-toolbar color="#33CD1E" class="photo" *ngIf="totalPrice>0">
-    <ion-button fill="clear" expand="full" color="light" routerLink="/pay-shopping-cart">
+    <ion-button fill="clear" expand="full" color="light" (click)="navigateToPayment()">
       Buy shopping cart ({{totalPrice}} €)
     </ion-button>
   </ion-toolbar>

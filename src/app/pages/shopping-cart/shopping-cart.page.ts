@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { ShoppingcartServiceService } from '../../services/shoppingcart-service.service';
 import { ShoppingCart } from '../../models/shopping-cart';
 import { AlertService } from 'src/app/services/alert.service';
@@ -52,6 +52,15 @@ export class ShoppingCartPage implements OnInit {
           this._alertService.presentToast("Removed product from shopping cart.");
         }
       )
+    }
+
+    navigateToPayment() {
+        let data: NavigationExtras = {
+          queryParams: {
+            special: JSON.stringify(this.shoppingCart)
+          }
+        };
+        this.router.navigate(['pay-shopping-cart'], data);
     }
 
     calculateTotalPrice() {
