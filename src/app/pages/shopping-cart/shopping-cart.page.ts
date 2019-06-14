@@ -22,25 +22,20 @@ export class ShoppingCartPage implements OnInit {
     private _alertService: AlertService
     ) {
       this.localStorage = localStorage;
+      this.route.queryParams.subscribe(params => {
+        if (params && params.special) {
+          this.shoppingCart = JSON.parse(params.special);
+        }
+      });
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.userId = params["userId"];
+    this._shoppingCartService.getShoppingCartProducts(this.shoppingCart.shoppingCartId)
+      .subscribe(data => {
+        this.shoppingCart.Products = data;
+        this.calculateTotalPrice();
     });
-    this._shoppingCartService.getShoppingCart(this.userId).subscribe(
-      data => {
-        this.shoppingCart.cartStatus = data[0]["cartStatus"];
-        this.shoppingCart.shoppingCartId = data[0]["shoppingCartId"];
-        this.shoppingCart.user = data[0]["user"];
-        this._shoppingCartService.getShoppingCartProducts(this.shoppingCart.shoppingCartId)
-        .subscribe(data => {
-          this.shoppingCart.Products = data;
-          this.calculateTotalPrice();
-        });
-      }
-    );
-    }
+  }
 
     deleteTransaction(id: number) {
       console.log(id);

@@ -36,7 +36,7 @@
 
 <!-- Mover a un componente menu -->
 <div *ngIf="userProfile != null">
-    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'Company'">
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.userType == 'Company'">
         <ion-fab-button>
             <ion-icon name="add-circle" color="#166B0A"></ion-icon>
           </ion-fab-button>
@@ -50,7 +50,7 @@
             <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
               <ion-icon name="person"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
+            <ion-fab-button (click)="navigateToShoppingCart()" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
             </ion-fab-button>
             <ion-fab-button routerLink="/about-us" data-desc="About Us">
@@ -64,7 +64,7 @@
   <!-- ADMIN -->
 </div>
 <div *ngIf="userProfile != null">
-    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'Administrator'">
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.userType == 'Administrator'">
         <ion-fab-button>
             <ion-icon name="add-circle" color="secondary"></ion-icon>
           </ion-fab-button>
@@ -78,7 +78,7 @@
             <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
               <ion-icon name="person"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
+            <ion-fab-button (click)="navigateToShoppingCart()" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
             </ion-fab-button>
             <ion-fab-button routerLink="/about-us" data-desc="About Us">
@@ -91,7 +91,7 @@
       </ion-fab>
 </div>
 <div *ngIf="userProfile != null">
-    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.UserType == 'User'">
+    <ion-fab vertical="bottom" horizontal="end" *ngIf="userProfile.userType == 'User'">
         <ion-fab-button>
             <ion-icon name="add-circle"></ion-icon>
           </ion-fab-button>
@@ -99,7 +99,7 @@
             <ion-fab-button routerLink="/user-profile" data-desc="Edit Profile">
               <ion-icon name="person"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button routerLink="/shopping-cart/{{userProfile.NickName}}" data-desc="Shopping Cart">
+            <ion-fab-button (click)="navigateToShoppingCart()" data-desc="Shopping Cart">
               <ion-icon name="cart"></ion-icon>
             </ion-fab-button>
             <ion-fab-button routerLink="/about-us" data-desc="About Us">

@@ -18,11 +18,11 @@ export class PayShoppingCartPage implements OnInit {
     private router: Router,
     private _shoppingCartService: ShoppingcartServiceService,
     private _alertService: AlertService ) {
-    this.route.queryParams.subscribe(params => {
-      if (params && params.special) {
-        this.shoppingCart = JSON.parse(params.special);
-      }
-    });
+      this.route.queryParams.subscribe(params => {
+        if (params && params.special) {
+          this.shoppingCart = JSON.parse(params.special);
+        }
+      });
   }
 
   ngOnInit() {

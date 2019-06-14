@@ -9,7 +9,6 @@ export class EnvService {
 
  
   API_URL = '';
- //API_URL = 'http://localhost:55895/';
 
   constructor() {
     if (environment.production == true) {

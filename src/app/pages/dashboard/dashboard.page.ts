@@ -6,6 +6,7 @@ import { CategoryService } from './../../services/category.service';
 import { CreateProductPage } from '../product/create-product/create-product.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { ShoppingcartServiceService } from 'src/app/services/shoppingcart-service.service';
+import { NavigationExtras, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,6 +31,8 @@ export class DashboardPage implements OnInit {
     private modalController: ModalController,
     private alertService: AlertService,
     private navCtrl: NavController,
+    private route: ActivatedRoute,
+    private router: Router,
     private _shoppingCartService: ShoppingcartServiceService
   ) {
     this.menu.enable(true);
@@ -40,15 +43,10 @@ export class DashboardPage implements OnInit {
 
     this.authService.getUserProfile().subscribe(
       data => {
-        this.userProfile.UserId = data["id"];
-        this.userProfile.Email = data["email"];
-        this.userProfile.FirstName = data["firstName"];
-        this.userProfile.LastName = data["lastName"];
-        this.userProfile.NickName = data["nickName"];
-        this.userProfile.UserType = data["userType"];
-        this._shoppingCartService.getShoppingCart(data["nickName"]).subscribe(
+        this.userProfile = data;
+        this._shoppingCartService.getShoppingCart(data.nickName).subscribe(
           sCart => {
-            this.userProfile.ShoppingCart = sCart[0];
+            this.userProfile.shoppingCart = sCart[0];
           }
         )
       }
@@ -65,7 +63,7 @@ export class DashboardPage implements OnInit {
   }
 
   addToShoppingCart(productId: number) {
-    var cartId = this.userProfile.ShoppingCart.shoppingCartId;
+    var cartId = this.userProfile.shoppingCart.shoppingCartId;
     this._shoppingCartService.addProductToShoppingCart(cartId, productId).subscribe(
       () => {
         this.alertService.presentToast("Product added succesfully to shopping cart!!");
@@ -77,15 +75,10 @@ export class DashboardPage implements OnInit {
 
     this.authService.getUserProfile().subscribe(
       data => {
-        this.userProfile.UserId = data["id"];
-        this.userProfile.Email = data["email"];
-        this.userProfile.FirstName = data["firstName"];
-        this.userProfile.LastName = data["lastName"];
-        this.userProfile.NickName = data["nickName"];
-        this.userProfile.UserType = data["userType"];
-        this._shoppingCartService.getShoppingCart(data["nickName"]).subscribe(
+        this.userProfile = data;
+        this._shoppingCartService.getShoppingCart(data.nickName).subscribe(
           sCart => {
-            this.userProfile.ShoppingCart = sCart[0];
+            this.userProfile.shoppingCart = sCart[0];
           }
         )
       }
@@ -96,6 +89,24 @@ export class DashboardPage implements OnInit {
         this.categories = data;
       }
     )
+  }
+
+  navigateToShoppingCart() {
+    let data: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.userProfile.shoppingCart)
+      }
+    };
+    this.router.navigate(['shopping-cart'], data);
+  }
+
+  navigateToEditUser() {
+    let data: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.userProfile)
+      }
+    };
+    this.router.navigate(['user-profile'], data);
   }
 
   async createProducts() {
