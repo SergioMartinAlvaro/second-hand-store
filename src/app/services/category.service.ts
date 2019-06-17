@@ -30,6 +30,13 @@ export class CategoryService {
     return this.http.get(this.env.API_URL + 'api/Category/' + id, {headers : headers});
   }
 
+  deleteCategory(id: number) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    return this.http.delete(this.env.API_URL + 'api/Category/' + id ,{headers : headers});
+  }
+
   createCategory(categoryName:string, categoryDescription:string) {
     const headers = new HttpHeaders({
       'Authorization': "Bearer " + this.localStorage["token"]

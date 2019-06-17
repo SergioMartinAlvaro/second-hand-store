@@ -1,9 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>product</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title>Edit Products</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <div *ngFor="let product of products" class="category-block">
+    <ion-row no-padding class="category-banner">
+      <ion-col text-left button tappable align-self-center (click)="product.expanded = !product.expanded">
+          {{product.productName}}
+      </ion-col>
+    </ion-row>
+    <ion-slides [options]="sliderConfig">
+      <ion-slide>
+        <div *ngIf="product.expanded">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                Edit
+              </ion-card-title>
+              <ion-card-content routerLink="/update-product/{{product.productId}}">
+                <img src="../../../assets/img/edit.png" style="height:50px; width:50px">
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+        </ion-slide>
+        <ion-slide>
+          <div *ngIf="product.expanded">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>
+                  Delete
+                </ion-card-title>
+                <ion-card-content (click)="deleteProduct(product.productId)">
+                  <img src="../../../assets/img/delete.png" style="height:50px; width:50px">
+                </ion-card-content>
+              </ion-card-header>
+            </ion-card>
+          </div>
+          </ion-slide>
+  </ion-slides>
+  </div>
+ 
 </ion-content>

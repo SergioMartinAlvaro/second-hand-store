@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title>Pay Shopping Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="pay(form)" method="post">
+    <ion-item>
+      <ion-label position="floating">Owner</ion-label>
+      <ion-input ngModel type="text" name="Owner"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Number of Card</ion-label>
+      <ion-input ngModel type="Number" name="Number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">CCV</ion-label>
+      <ion-input ngModel type="Number" name="CCV"></ion-input>
+    </ion-item>
+    <ion-footer>
+      <ion-toolbar color="#33CD1E" class="photo">
+        <ion-button type="submit" fill="clear" expand="full" color="light">
+          Pay
+        </ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+</ion-content>
+
+
+

@@ -42,23 +42,33 @@ export class RegisterPage implements OnInit {
   }
 
   register(form: NgForm) {
-    this.authService.register(form.value.uName, form.value.fName, form.value.lName, 
-      form.value.email, form.value.password, form.value.UserType).subscribe(
-        data => {
-          this.id = form.value.uName;
-          console.log("Correct");
-            this.alertService.presentToast("User " + form.value.uName +" registered.");
-            this.dimissRegister();
-           // this.navCtrl.navigateRoot("/dashboard");
-        },
-        error => {
-          console.log(error);
-        },
-        () => {
-          console.log(this.id);
-          this.createShoppingCart();
+    if(form.value.uName && form.value.fName && form.value.lName && 
+      form.value.email && form.value.password && form.value.UserType) {
+        this.authService.register(form.value.uName, form.value.fName, form.value.lName, 
+          form.value.email, form.value.password, form.value.UserType).subscribe(
+            data => {
+              this.id = form.value.uName;
+              console.log("Correct");
+                this.createShoppingCart();
+                this.alertService.presentToast("User " + form.value.uName +" registered.");
+                this.dimissRegister();
+               // this.navCtrl.navigateRoot("/dashboard");
+            },
+            error => {
+              console.log(error);
+            },
+            () => {
+
+            }
+          );
+      } else {
+        if(!form.value.uName || !form.value.fName || !form.value.lName || 
+          !form.value.email || !form.value.password || !form.value.UserType) {
+            this.alertService.presentToast("Please, fill all fields to register an user.");
+        } else {
+          this.alertService.presentToast("Network error, contact with your IT team.");
         }
-      );
+    }
   }
 
   createShoppingCart() {

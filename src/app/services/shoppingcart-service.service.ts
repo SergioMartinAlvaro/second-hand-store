@@ -54,5 +54,20 @@ export class ShoppingcartServiceService {
       });
       return this.http.get(this.env.API_URL + 'api/ShoppingCartTransactionsModels/' + id , {headers : headers});
     }
+
+    deleteShoppingCartTransaction(id: number) {
+      const headers = new HttpHeaders({
+        'Authorization': "Bearer " + this.localStorage["token"]
+      });
+      return this.http.delete(this.env.API_URL + 'api/ShoppingCartTransactionsModels/' + id , {headers : headers});
+    } 
+
+    payShoppingCart(id: number, user: string) {
+      const headers = new HttpHeaders({
+        'Authorization': "Bearer " + this.localStorage["token"]
+      });
+      const data = {CartStatus: false, ShoppingCartId: id,  User: user};
+      return this.http.put(this.env.API_URL + 'api/ShoppingCartModels/' + id , data, {headers : headers});
+    }
   }
 

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-button color="danger" routerLink="/dashboard" class="close-button">Close</ion-button>
+    <ion-title>Update Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding *ngIf="product">
+    <form #form="ngForm" (ngSubmit)="updateProduct(form)" method="put">
+        <ion-item>
+            <ion-label position="floating">Name: </ion-label>
+            <br>
+            <ion-input ngModel name="Name" placeholder="{{product.productName}}"></ion-input>
+        </ion-item>
+      <ion-item>
+          <ion-label position="floating">Description: </ion-label>
+          <br>
+          <ion-input ngModel name="Description" placeholder="{{product.productDescription}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price: </ion-label>
+        <br>
+        <ion-input ngModel name="Price" placeholder="{{product.productPrice}}"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-label position="floating">Category: </ion-label>
+      <ion-select #S position="floating" (ionChange)="onChange(S.value)" ngModel name="Category">
+          <ion-select-option  *ngFor="let category of categories"  [value]="category.categoryId">{{category.categoryName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+      <br>
+      <ion-button type="submit" expand="full" class="create" color="#166B0A">Update Product</ion-button>
+    </form>
+</ion-content>
