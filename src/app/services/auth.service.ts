@@ -84,8 +84,25 @@ export class AuthService {
       'Authorization': "Bearer " + this.localStorage["token"]
     });
     const data = {NickName: nickName, FirstName: firstName, LastName: lastName, Email: email, UserType: userType};
-    console.log(data);
     return this.http.put(this.env.API_URL + 'api/UserProfile/' + id, data, {headers: headers});
+  }
+
+  deleteUser(id: string) {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    return this.http.delete(this.env.API_URL + 'api/' + id, {headers: headers});
+  }
+
+  getAllUsers() {
+    const headers = new HttpHeaders({
+      'Authorization': "Bearer " + this.localStorage["token"]
+    });
+    return this.http.get<User[]>(this.env.API_URL + 'api/users', {headers: headers})
+    .pipe(tap(user => {
+      return user;
+    }
+      ));
   }
 
   getToken() {

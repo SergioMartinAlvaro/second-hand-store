@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'shopping-cart', loadChildren: './pages/shopping-cart/shopping-cart.module#ShoppingCartPageModule', canActivate: [AuthGuard] },
   { path: 'update-product/:productId', loadChildren: './pages/product/update-product/update-product.module#UpdateProductPageModule', canActivate: [AuthGuard] },
   { path: 'about-us', loadChildren: './pages/dashboard/about-us/about-us.module#AboutUsPageModule', canActivate: [AuthGuard] },
-  { path: 'pay-shopping-cart', loadChildren: './pages/shopping-cart/pay-shopping-cart/pay-shopping-cart.module#PayShoppingCartPageModule', canActivate: [AuthGuard] },
+  { path: 'pay-shopping-cart', loadChildren: './pages/shopping-cart/pay-shopping-cart/pay-shopping-cart.module#PayShoppingCartPageModule', canActivate: [AuthGuard] },  { path: 'manage-users', loadChildren: './pages/user/manage-users/manage-users.module#ManageUsersPageModule' },
+
 ];
 
 @NgModule({
