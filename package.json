@@ -33,7 +33,7 @@
     "@ionic/storage": "^2.2.0",
     "browser": "^0.2.6",
     "cordova": "^9.0.0",
-    "cordova-android": "7.0.0",
+    "cordova-android": "11.0.0",
     "cordova-browser": "6.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-app-preferences": "git+https://github.com/vash15/me.apla.cordova.app-preferences.git",
